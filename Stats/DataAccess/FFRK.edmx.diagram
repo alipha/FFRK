@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="44d4c2b3ada2465da4db56047667f269" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="Model.Character" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Game" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Item" Width="1.5" PointX="7.5" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SoulBreak" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_Character_Game" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_SoulBreak_Character" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Item_Game" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Item_SoulBreak" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Model.AspNetUser" Width="1.5" PointX="9.75" PointY="3" />
+        <AssociationConnector Association="Model.User_Character" />
+        <AssociationConnector Association="Model.User_Item" />
+        <EntityTypeShape EntityType="Model.AbilityType" Width="1.5" PointX="1.125" PointY="6" />
+        <EntityTypeShape EntityType="Model.ItemType" Width="1.5" PointX="0.75" PointY="0.875" />
+        <AssociationConnector Association="Model.FK_Item_Type1" />
+        <AssociationConnector Association="Model.Character_AbilityType" />
+        <AssociationConnector Association="Model.Character_ItemType" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,762 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AbilityType">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Character">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GameName" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ImageName" Type="varchar" MaxLength="50" />
+          <Property Name="JobName" Type="varchar" MaxLength="50" />
+          <Property Name="Health" Type="int" />
+          <Property Name="Attack" Type="int" />
+          <Property Name="Defense" Type="int" />
+          <Property Name="Magic" Type="int" />
+          <Property Name="Resistance" Type="int" />
+          <Property Name="Mind" Type="int" />
+          <Property Name="Accuracy" Type="int" />
+          <Property Name="Evade" Type="int" />
+          <Property Name="Speed" Type="int" />
+        </EntityType>
+        <EntityType Name="Character_AbilityType">
+          <Key>
+            <PropertyRef Name="CharacterName" />
+            <PropertyRef Name="AbilityTypeName" />
+          </Key>
+          <Property Name="CharacterName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AbilityTypeName" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Character_ItemType">
+          <Key>
+            <PropertyRef Name="CharacterName" />
+            <PropertyRef Name="ItemTypeName" />
+          </Key>
+          <Property Name="CharacterName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ItemTypeName" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Name" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="SortOrder" Type="int" Nullable="false" />
+          <Property Name="TempName" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GameName" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Rarity" Type="int" Nullable="false" />
+          <Property Name="ItemTypeName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Effect" Type="varchar" MaxLength="200" />
+          <Property Name="SoulBreakName" Type="varchar" MaxLength="50" />
+          <Property Name="Attack" Type="int" />
+          <Property Name="AttackMax" Type="int" />
+          <Property Name="Defense" Type="int" />
+          <Property Name="DefenseMax" Type="int" />
+          <Property Name="Magic" Type="int" />
+          <Property Name="MagicMax" Type="int" />
+          <Property Name="Resistance" Type="int" />
+          <Property Name="ResistanceMax" Type="int" />
+          <Property Name="Mind" Type="int" />
+          <Property Name="MindMax" Type="int" />
+          <Property Name="Accuracy" Type="int" />
+          <Property Name="AccuracyMax" Type="int" />
+          <Property Name="Evade" Type="int" />
+          <Property Name="EvadeMax" Type="int" />
+          <Property Name="ImageName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ItemType">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SortOrder" Type="int" Nullable="false" />
+          <Property Name="ImageName" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="SoulBreak">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CharacterName" Type="varchar" MaxLength="50" />
+          <Property Name="Gauge" Type="int" Nullable="false" />
+          <Property Name="Effect" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ImageName" Type="varchar" MaxLength="50" />
+          <Property Name="TempLink" Type="varchar" MaxLength="50" />
+          <Property Name="Target" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="User_Character">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="CharacterName" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="CharacterName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User_Item">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ItemId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Character_AbilityType_AbilityType">
+          <End Role="AbilityType" Type="Self.AbilityType" Multiplicity="1" />
+          <End Role="Character_AbilityType" Type="Self.Character_AbilityType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AbilityType">
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="Character_AbilityType">
+              <PropertyRef Name="AbilityTypeName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Character_AbilityType_Character">
+          <End Role="Character" Type="Self.Character" Multiplicity="1" />
+          <End Role="Character_AbilityType" Type="Self.Character_AbilityType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Character">
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="Character_AbilityType">
+              <PropertyRef Name="CharacterName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Character_Game">
+          <End Role="Game" Type="Self.Game" Multiplicity="1" />
+          <End Role="Character" Type="Self.Character" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="Character">
+              <PropertyRef Name="GameName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Character_ItemType_Character">
+          <End Role="Character" Type="Self.Character" Multiplicity="1" />
+          <End Role="Character_ItemType" Type="Self.Character_ItemType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Character">
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="Character_ItemType">
+              <PropertyRef Name="CharacterName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Character_ItemType_ItemType">
+          <End Role="ItemType" Type="Self.ItemType" Multiplicity="1" />
+          <End Role="Character_ItemType" Type="Self.Character_ItemType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemType">
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="Character_ItemType">
+              <PropertyRef Name="ItemTypeName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Game">
+          <End Role="Game" Type="Self.Game" Multiplicity="1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="GameName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_SoulBreak">
+          <End Role="SoulBreak" Type="Self.SoulBreak" Multiplicity="0..1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoulBreak">
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="SoulBreakName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Type">
+          <End Role="ItemType" Type="Self.ItemType" Multiplicity="1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemType">
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="ItemTypeName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoulBreak_Character">
+          <End Role="Character" Type="Self.Character" Multiplicity="0..1" />
+          <End Role="SoulBreak" Type="Self.SoulBreak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Character">
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="SoulBreak">
+              <PropertyRef Name="CharacterName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Character_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="User_Character" Type="Self.User_Character" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User_Character">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Character_Character">
+          <End Role="Character" Type="Self.Character" Multiplicity="1" />
+          <End Role="User_Character" Type="Self.User_Character" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Character">
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="User_Character">
+              <PropertyRef Name="CharacterName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Item_Item">
+          <End Role="Item" Type="Self.Item" Multiplicity="1" />
+          <End Role="User_Item" Type="Self.User_Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User_Item">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Item_User">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="User_Item" Type="Self.User_Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User_Item">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="AbilityType" EntityType="Self.AbilityType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Character" EntityType="Self.Character" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Character_AbilityType" EntityType="Self.Character_AbilityType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Character_ItemType" EntityType="Self.Character_ItemType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Game" EntityType="Self.Game" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemType" EntityType="Self.ItemType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoulBreak" EntityType="Self.SoulBreak" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_Character" EntityType="Self.User_Character" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_Item" EntityType="Self.User_Item" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Character_AbilityType_AbilityType" Association="Self.FK_Character_AbilityType_AbilityType">
+            <End Role="AbilityType" EntitySet="AbilityType" />
+            <End Role="Character_AbilityType" EntitySet="Character_AbilityType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Character_AbilityType_Character" Association="Self.FK_Character_AbilityType_Character">
+            <End Role="Character" EntitySet="Character" />
+            <End Role="Character_AbilityType" EntitySet="Character_AbilityType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Character_Game" Association="Self.FK_Character_Game">
+            <End Role="Game" EntitySet="Game" />
+            <End Role="Character" EntitySet="Character" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Character_ItemType_Character" Association="Self.FK_Character_ItemType_Character">
+            <End Role="Character" EntitySet="Character" />
+            <End Role="Character_ItemType" EntitySet="Character_ItemType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Character_ItemType_ItemType" Association="Self.FK_Character_ItemType_ItemType">
+            <End Role="ItemType" EntitySet="ItemType" />
+            <End Role="Character_ItemType" EntitySet="Character_ItemType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Game" Association="Self.FK_Item_Game">
+            <End Role="Game" EntitySet="Game" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_SoulBreak" Association="Self.FK_Item_SoulBreak">
+            <End Role="SoulBreak" EntitySet="SoulBreak" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Type" Association="Self.FK_Item_Type">
+            <End Role="ItemType" EntitySet="ItemType" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoulBreak_Character" Association="Self.FK_SoulBreak_Character">
+            <End Role="Character" EntitySet="Character" />
+            <End Role="SoulBreak" EntitySet="SoulBreak" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Character_AspNetUsers" Association="Self.FK_User_Character_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="User_Character" EntitySet="User_Character" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Character_Character" Association="Self.FK_User_Character_Character">
+            <End Role="Character" EntitySet="Character" />
+            <End Role="User_Character" EntitySet="User_Character" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Item_Item" Association="Self.FK_User_Item_Item">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="User_Item" EntitySet="User_Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Item_User" Association="Self.FK_User_Item_User">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="User_Item" EntitySet="User_Item" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Character">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GameName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Game" Relationship="Self.FK_Character_Game" FromRole="Character" ToRole="Game" />
+          <NavigationProperty Name="SoulBreaks" Relationship="Self.FK_SoulBreak_Character" FromRole="Character" ToRole="SoulBreak" />
+          <Property Name="ImageName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="JobName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Health" Type="Int32" />
+          <Property Name="Attack" Type="Int32" />
+          <Property Name="Defense" Type="Int32" />
+          <Property Name="Magic" Type="Int32" />
+          <Property Name="Resistance" Type="Int32" />
+          <Property Name="Mind" Type="Int32" />
+          <Property Name="Accuracy" Type="Int32" />
+          <Property Name="Evade" Type="Int32" />
+          <Property Name="Speed" Type="Int32" />
+          <NavigationProperty Name="AbilityTypes" Relationship="Model.Character_AbilityType" FromRole="Character" ToRole="AbilityType" />
+          <NavigationProperty Name="ItemTypes" Relationship="Model.Character_ItemType" FromRole="Character" ToRole="ItemType" />
+        </EntityType>
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SortOrder" Type="Int32" Nullable="false" />
+          <Property Name="TempName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Characters" Relationship="Model.FK_Character_Game" FromRole="Game" ToRole="Character" />
+          <NavigationProperty Name="Items" Relationship="Model.FK_Item_Game" FromRole="Game" ToRole="Item" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GameName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Rarity" Type="Int32" Nullable="false" />
+          <Property Name="Effect" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SoulBreakName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Attack" Type="Int32" />
+          <Property Name="AttackMax" Type="Int32" />
+          <Property Name="Defense" Type="Int32" />
+          <Property Name="DefenseMax" Type="Int32" />
+          <Property Name="Magic" Type="Int32" />
+          <Property Name="MagicMax" Type="Int32" />
+          <Property Name="Resistance" Type="Int32" />
+          <Property Name="ResistanceMax" Type="Int32" />
+          <Property Name="Mind" Type="Int32" />
+          <Property Name="MindMax" Type="Int32" />
+          <Property Name="Accuracy" Type="Int32" />
+          <Property Name="AccuracyMax" Type="Int32" />
+          <Property Name="Evade" Type="Int32" />
+          <Property Name="EvadeMax" Type="Int32" />
+          <NavigationProperty Name="Game" Relationship="Self.FK_Item_Game" FromRole="Item" ToRole="Game" />
+          <NavigationProperty Name="SoulBreak" Relationship="Self.FK_Item_SoulBreak" FromRole="Item" ToRole="SoulBreak" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ImageName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ItemTypeName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ItemType" Relationship="Model.FK_Item_Type1" FromRole="Item" ToRole="ItemType1" />
+        </EntityType>
+        <EntityType Name="SoulBreak">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CharacterName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gauge" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Character" Relationship="Self.FK_SoulBreak_Character" FromRole="SoulBreak" ToRole="Character" />
+          <NavigationProperty Name="Items" Relationship="Self.FK_Item_SoulBreak" FromRole="SoulBreak" ToRole="Item" />
+          <Property Name="ImageName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TempLink" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Effect" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Target" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Character_Game">
+          <End Role="Game" Type="Self.Game" Multiplicity="1" />
+          <End Role="Character" Type="Self.Character" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="Character">
+              <PropertyRef Name="GameName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SoulBreak_Character">
+          <End Role="Character" Type="Self.Character" Multiplicity="0..1" />
+          <End Role="SoulBreak" Type="Self.SoulBreak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Character">
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="SoulBreak">
+              <PropertyRef Name="CharacterName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Game">
+          <End Role="Game" Type="Self.Game" Multiplicity="1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Game">
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="GameName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_SoulBreak">
+          <End Role="SoulBreak" Type="Self.SoulBreak" Multiplicity="0..1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoulBreak">
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="SoulBreakName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FFRKEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Characters" EntityType="Self.Character" />
+          <EntitySet Name="Games" EntityType="Self.Game" />
+          <EntitySet Name="Items" EntityType="Self.Item" />
+          <EntitySet Name="SoulBreaks" EntityType="Self.SoulBreak" />
+          <AssociationSet Name="FK_Character_Game" Association="Self.FK_Character_Game">
+            <End Role="Game" EntitySet="Games" />
+            <End Role="Character" EntitySet="Characters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SoulBreak_Character" Association="Self.FK_SoulBreak_Character">
+            <End Role="Character" EntitySet="Characters" />
+            <End Role="SoulBreak" EntitySet="SoulBreaks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Game" Association="Self.FK_Item_Game">
+            <End Role="Game" EntitySet="Games" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_SoulBreak" Association="Self.FK_Item_SoulBreak">
+            <End Role="SoulBreak" EntitySet="SoulBreaks" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <EntitySet Name="AspNetUsers" EntityType="Model.AspNetUser" />
+          <AssociationSet Name="User_Character" Association="Model.User_Character">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="Character" EntitySet="Characters" />
+          </AssociationSet>
+          <AssociationSet Name="User_Item" Association="Model.User_Item">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <EntitySet Name="AbilityTypes" EntityType="Model.AbilityType" />
+          <EntitySet Name="ItemTypes" EntityType="Model.ItemType" />
+          <AssociationSet Name="FK_Item_Type1" Association="Model.FK_Item_Type1">
+            <End Role="ItemType1" EntitySet="ItemTypes" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="Character_AbilityType" Association="Model.Character_AbilityType">
+            <End Role="AbilityType" EntitySet="AbilityTypes" />
+            <End Role="Character" EntitySet="Characters" />
+          </AssociationSet>
+          <AssociationSet Name="Character_ItemType" Association="Model.Character_ItemType">
+            <End Role="Character" EntitySet="Characters" />
+            <End Role="ItemType" EntitySet="ItemTypes" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Characters" Relationship="Model.User_Character" FromRole="AspNetUser" ToRole="Character" />
+          <NavigationProperty Name="Items" Relationship="Model.User_Item" FromRole="AspNetUser" ToRole="Item" />
+        </EntityType>
+        <Association Name="User_Character">
+          <End Type="Model.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+          <End Type="Model.Character" Role="Character" Multiplicity="*" />
+        </Association>
+        <Association Name="User_Item">
+          <End Type="Model.Item" Role="Item" Multiplicity="*" />
+          <End Type="Model.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityType Name="AbilityType">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Characters" Relationship="Model.Character_AbilityType" FromRole="AbilityType" ToRole="Character" />
+        </EntityType>
+        <EntityType Name="ItemType">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SortOrder" Type="Int32" Nullable="false" />
+          <Property Name="ImageName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Items" Relationship="Model.FK_Item_Type1" FromRole="ItemType1" ToRole="Item" />
+          <NavigationProperty Name="Characters" Relationship="Model.Character_ItemType" FromRole="ItemType" ToRole="Character" />
+        </EntityType>
+        <Association Name="FK_Item_Type1">
+          <End Type="Model.ItemType" Role="ItemType1" Multiplicity="1" />
+          <End Type="Model.Item" Role="Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemType1">
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="ItemTypeName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Character_AbilityType">
+          <End Type="Model.AbilityType" Role="AbilityType" Multiplicity="*" />
+          <End Type="Model.Character" Role="Character" Multiplicity="*" />
+        </Association>
+        <Association Name="Character_ItemType">
+          <End Type="Model.Character" Role="Character" Multiplicity="*" />
+          <End Type="Model.ItemType" Role="ItemType" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="FFRKEntities">
+          <EntitySetMapping Name="Characters">
+            <EntityTypeMapping TypeName="Model.Character">
+              <MappingFragment StoreEntitySet="Character">
+                <ScalarProperty Name="Speed" ColumnName="Speed" />
+                <ScalarProperty Name="Evade" ColumnName="Evade" />
+                <ScalarProperty Name="Accuracy" ColumnName="Accuracy" />
+                <ScalarProperty Name="Mind" ColumnName="Mind" />
+                <ScalarProperty Name="Resistance" ColumnName="Resistance" />
+                <ScalarProperty Name="Magic" ColumnName="Magic" />
+                <ScalarProperty Name="Defense" ColumnName="Defense" />
+                <ScalarProperty Name="Attack" ColumnName="Attack" />
+                <ScalarProperty Name="Health" ColumnName="Health" />
+                <ScalarProperty Name="JobName" ColumnName="JobName" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GameName" ColumnName="GameName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Games">
+            <EntityTypeMapping TypeName="Model.Game">
+              <MappingFragment StoreEntitySet="Game">
+                <ScalarProperty Name="TempName" ColumnName="TempName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="Model.Item">
+              <MappingFragment StoreEntitySet="Item">
+                <ScalarProperty Name="ItemTypeName" ColumnName="ItemTypeName" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GameName" ColumnName="GameName" />
+                <ScalarProperty Name="Rarity" ColumnName="Rarity" />
+                <ScalarProperty Name="Effect" ColumnName="Effect" />
+                <ScalarProperty Name="SoulBreakName" ColumnName="SoulBreakName" />
+                <ScalarProperty Name="Attack" ColumnName="Attack" />
+                <ScalarProperty Name="AttackMax" ColumnName="AttackMax" />
+                <ScalarProperty Name="Defense" ColumnName="Defense" />
+                <ScalarProperty Name="DefenseMax" ColumnName="DefenseMax" />
+                <ScalarProperty Name="Magic" ColumnName="Magic" />
+                <ScalarProperty Name="MagicMax" ColumnName="MagicMax" />
+                <ScalarProperty Name="Resistance" ColumnName="Resistance" />
+                <ScalarProperty Name="ResistanceMax" ColumnName="ResistanceMax" />
+                <ScalarProperty Name="Mind" ColumnName="Mind" />
+                <ScalarProperty Name="MindMax" ColumnName="MindMax" />
+                <ScalarProperty Name="Accuracy" ColumnName="Accuracy" />
+                <ScalarProperty Name="AccuracyMax" ColumnName="AccuracyMax" />
+                <ScalarProperty Name="Evade" ColumnName="Evade" />
+                <ScalarProperty Name="EvadeMax" ColumnName="EvadeMax" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoulBreaks">
+            <EntityTypeMapping TypeName="Model.SoulBreak">
+              <MappingFragment StoreEntitySet="SoulBreak">
+                <ScalarProperty Name="Target" ColumnName="Target" />
+                <ScalarProperty Name="Effect" ColumnName="Effect" />
+                <ScalarProperty Name="TempLink" ColumnName="TempLink" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CharacterName" ColumnName="CharacterName" />
+                <ScalarProperty Name="Gauge" ColumnName="Gauge" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="Model.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="User_Character" TypeName="Model.User_Character" StoreEntitySet="User_Character">
+            <EndProperty Name="Character">
+              <ScalarProperty Name="Name" ColumnName="CharacterName" />
+            </EndProperty>
+            <EndProperty Name="AspNetUser">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="User_Item" TypeName="Model.User_Item" StoreEntitySet="User_Item">
+            <EndProperty Name="AspNetUser">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="Item">
+              <ScalarProperty Name="Id" ColumnName="ItemId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="AbilityTypes">
+            <EntityTypeMapping TypeName="Model.AbilityType">
+              <MappingFragment StoreEntitySet="AbilityType">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemTypes">
+            <EntityTypeMapping TypeName="Model.ItemType">
+              <MappingFragment StoreEntitySet="ItemType">
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Character_AbilityType" TypeName="Model.Character_AbilityType" StoreEntitySet="Character_AbilityType">
+            <EndProperty Name="Character">
+              <ScalarProperty Name="Name" ColumnName="CharacterName" />
+            </EndProperty>
+            <EndProperty Name="AbilityType">
+              <ScalarProperty Name="Name" ColumnName="AbilityTypeName" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Character_ItemType" TypeName="Model.Character_ItemType" StoreEntitySet="Character_ItemType">
+            <EndProperty Name="ItemType">
+              <ScalarProperty Name="Name" ColumnName="ItemTypeName" />
+            </EndProperty>
+            <EndProperty Name="Character">
+              <ScalarProperty Name="Name" ColumnName="CharacterName" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

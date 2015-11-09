@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stats", "Stats\Stats.csproj", "{917C8C26-C7AA-4DD4-9AA7-3AB1552A420A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scraper", "Scraper\Scraper.csproj", "{2C762688-31A4-4B50-A4B2-F21B9C433C81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{0670452A-61E0-40DA-B35C-46D22698CE94}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{917C8C26-C7AA-4DD4-9AA7-3AB1552A420A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{917C8C26-C7AA-4DD4-9AA7-3AB1552A420A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{917C8C26-C7AA-4DD4-9AA7-3AB1552A420A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{917C8C26-C7AA-4DD4-9AA7-3AB1552A420A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C762688-31A4-4B50-A4B2-F21B9C433C81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C762688-31A4-4B50-A4B2-F21B9C433C81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C762688-31A4-4B50-A4B2-F21B9C433C81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C762688-31A4-4B50-A4B2-F21B9C433C81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0670452A-61E0-40DA-B35C-46D22698CE94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0670452A-61E0-40DA-B35C-46D22698CE94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0670452A-61E0-40DA-B35C-46D22698CE94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0670452A-61E0-40DA-B35C-46D22698CE94}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
